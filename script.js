@@ -27,10 +27,14 @@ function btn(num) {
             if (symbols.includes(display.innerText.charAt(display.innerText.length-1))) {
                 display.innerText += num;
             }else {
-                if (num == "(") {
-                    btn('*');   
+                if (display.innerText == 0) {
+                    display.innerText = num;
+                }else{
+                    if (num == "(") {
+                        btn('*');   
+                    }
+                    display.innerText += num;
                 }
-                display.innerText += num;
             }
         }
         else if (num == "e" || num == "pi") {
@@ -155,6 +159,15 @@ function sqroot() {
     try {
         result.innerText = Math.sqrt(eval(display.innerText));
         result.style.color = "green";
+    } catch (error) {
+        result.innerText = error;
+        result.style.color = "red";
+    }
+}
+function abs() {
+    try {
+        result.innerText = Math.abs(eval(display.innerText));  
+        result.style.color = "green"; 
     } catch (error) {
         result.innerText = error;
         result.style.color = "red";

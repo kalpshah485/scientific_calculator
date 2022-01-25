@@ -11,10 +11,19 @@
     <title>Scientific Calculator</title>
 </head>
 <body onkeydown="btn(event.key)">
-    <div class="container">
-        <div class="row"><span id="history" style="text-align: right;">0</span></div>
-        <div class="row"><span id="display" style="text-align: right;">0</span></div>
-        <div class="row"><span id="result" style="text-align: right;">0</span></div>
+    <div id="container">
+        <div class="row">
+            <div class="col-3 ps-3">History:</div>
+            <div class="col" id="history">0</div>
+        </div>
+        <div class="row">
+            <div class="col-3 ps-3">Display:</div>
+            <div class="col" id="display">0</div>
+        </div>
+        <div class="row">
+            <div class="col-3 ps-3">Result:</div>
+            <div class="col" id="result">0</div>
+        </div>
         <div class="row">
             <div class="col"><button class="btn btn-white" onclick="toggleDegRad(event)" value="DEG">DEG</button></div>
             <div class="col">F-E</div>
@@ -30,12 +39,11 @@
             <div class="col"><button class="btn btn-white" onclick="memory()">MS</button></div>
         </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col-5">
                 &#9727; Trigonometry <i class="fa fa-angle-down" aria-hidden="true"></i>
             </div>
-            <div class="col"></div>
-            <div class="col-4"><i>f</i> function <i class="fa fa-angle-down" aria-hidden="true"></i></div>
-            <div class="col"></div>
+            <!-- <div class="col"></div> -->
+            <div class="col-5"><i>f</i> function <i class="fa fa-angle-down" aria-hidden="true"></i></div>
             <div class="col"></div>
         </div>
         <div class="row">
@@ -47,8 +55,8 @@
         </div>
         <div class="row">
             <div class="col"><button class="btn btn-white" onclick="square()">x<sup>2</sup></button></div>
-            <div class="col"><sup>1</sup>&#8725;<sub>x</sub></div>
-            <div class="col">|x|</div>
+            <div class="col"><button class="btn btn-white" onclick="oneDivBy()"><sup>1</sup>&#8725;<sub>x</sub></button></div>
+            <div class="col"><button class="btn btn-white" onclick="abs()">|x|</button></div>
             <div class="col">exp</div>
             <div class="col"><button class="btn btn-white" onclick="btn('%')">mod</button></div>
         </div>
