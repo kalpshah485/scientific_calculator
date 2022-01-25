@@ -1,7 +1,7 @@
 var historyUp = document.getElementById("history");
 var display = document.getElementById("display");
 var result = document.getElementById("result");
-const symbols = ["+","-","*","/",".","%"]
+const symbols = ["+","-","*","/","%"]
 var e = Math.exp(1);
 var pi = Math.PI;
 var store = 0;
@@ -22,6 +22,23 @@ function btn(num) {
             doubleSymbol(num);
         }else if (num == "^") {
             doubleSymbol("**");
+        }
+        else if (num == "(" || num == ")") {
+            if (symbols.includes(display.innerText.charAt(display.innerText.length-1))) {
+                display.innerText += num;
+            }else {
+                if (num == "(") {
+                    btn('*');   
+                }
+                display.innerText += num;
+            }
+        }
+        else if (num == "e" || num == "pi") {
+            if(display.innerText == 0){
+                display.innerText = num;
+            }else{
+                display.innerText += num;
+            }
         }
         else if(num == "=" || num == "Enter") {
             answer();
@@ -44,7 +61,7 @@ function answer() {
     try {
         result.innerText = eval(display.innerText);
         result.style.color = "green";
-        changeAns();   
+        changeAns();
     } catch (error) {
         result.innerText = error;
         result.style.color = "red";
@@ -56,10 +73,14 @@ function clearDisplay() {
     console.log(display.innerText);
 }
 function back() {
-    if(display.innerText.length == 1){
+    if(display.innerText.length == 1 || (display.innerText.length == 2 && display.innerText == "pi")){
         display.innerText = 0;
     }else{
-        display.innerText = display.innerText.substring(0,display.innerText.length-1);
+        if (display.innerText.substring(display.innerText.length-2,display.innerText.length) == "pi") {
+            display.innerText = display.innerText.substring(0,display.innerText.length-2);   
+        }else {
+            display.innerText = display.innerText.substring(0,display.innerText.length-1);
+        }
     }
 }
 function toggleDegRad(event) {
