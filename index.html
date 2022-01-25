@@ -10,22 +10,24 @@
     <link rel="stylesheet" href="style.css">
     <title>Scientific Calculator</title>
 </head>
-<body>
+<body onkeydown="btn(event.key)">
     <div class="container">
+        <div class="row"><span id="history" style="text-align: right;">0</span></div>
         <div class="row"><span id="display" style="text-align: right;">0</span></div>
+        <div class="row"><span id="result" style="text-align: right;">0</span></div>
         <div class="row">
-            <div class="col"><button class="btn btn-white">DEG</button></div>
+            <div class="col"><button class="btn btn-white" onclick="toggleDegRad(event)" value="DEG">DEG</button></div>
             <div class="col">F-E</div>
             <div class="col"></div>
             <div class="col"></div>
             <div class="col"></div>
         </div>
         <div class="row">
-            <div class="col">MC</div>
-            <div class="col">MR</div>
-            <div class="col">M+</div>
-            <div class="col">M-</div>
-            <div class="col">MS</div>
+            <div class="col"><button class="btn btn-white" onclick="memoryclear()">MC</button></div>
+            <div class="col"><button class="btn btn-white" onclick="memoryread()">MR</button></div>
+            <div class="col"><button class="btn btn-white" onclick="memoryplus()">M+</button></div>
+            <div class="col"><button class="btn btn-white" onclick="memoryminus()">M-</button></div>
+            <div class="col"><button class="btn btn-white" onclick="memory()">MS</button></div>
         </div>
         <div class="row">
             <div class="col-3">
@@ -39,51 +41,51 @@
         <div class="row">
             <div class="col">2<sup>nd</sup></div>
             <div class="col">𝝅</div>
-            <div class="col">&#8337;</div>
-            <div class="col">C</div>
-            <div class="col">⌫</div>
+            <div class="col"><button class="btn btn-white" onclick="btn('e')">e</button></div>
+            <div class="col"><button class="btn btn-white" onclick="clearDisplay()">C</button></div>
+            <div class="col"><button class="btn btn-white" onclick="back()">⌫</button></div>
         </div>
         <div class="row">
-            <div class="col">x<sup>2</sup></div>
+            <div class="col"><button class="btn btn-white" onclick="square()">x<sup>2</sup></button></div>
             <div class="col"><sup>1</sup>&#8725;<sub>x</sub></div>
             <div class="col">|x|</div>
             <div class="col">exp</div>
-            <div class="col">mod</div>
+            <div class="col"><button class="btn btn-white" onclick="btn('%')">mod</button></div>
         </div>
         <div class="row">
-            <div class="col"><sup>2</sup>√<span>x</span></div>
-            <div class="col">(</div>
-            <div class="col">)</div>
+            <div class="col"><button class="btn btn-white" onclick="sqroot()"><sup>2</sup>√<sub>x</sub></button></div>
+            <div class="col"><button class="btn btn-white" onclick="btn('(')">(</button></div>
+            <div class="col"><button class="btn btn-white">)</button></div>
             <div class="col">n!</div>
-            <div class="col">&#247;</div>
+            <div class="col"><button class="btn btn-white">&#247;</button></div>
         </div>
         <div class="row">
-            <div class="col">x<sup>y</sup></div>
+            <div class="col"><button class="btn btn-white" onclick="btn('^')">x<sup>y</sup></button></div>
             <div class="col"><button class="btn btn-white" onclick="btn(7)">7</button></div>
             <div class="col"><button class="btn btn-white" onclick="btn(8)">8</button></div>
             <div class="col"><button class="btn btn-white" onclick="btn(9)">9</button></div>
-            <div class="col">&#215;</div>
+            <div class="col"><button class="btn btn-white" onclick="btn('*')">&#215;</button></div>
         </div>
         <div class="row">
-            <div class="col">10<sup>x</sup></div>
+            <div class="col"><button class="btn btn-white" onclick="tenx()">10<sup>x</sup></button></div>
             <div class="col"><button class="btn btn-white" onclick="btn(4)">4</button></div>
             <div class="col"><button class="btn btn-white" onclick="btn(5)">5</button></div>
             <div class="col"><button class="btn btn-white" onclick="btn(6)">6</button></div>
-            <div class="col">-</div>
+            <div class="col"><button class="btn btn-white" onclick="btn('-')">-</button></div>
         </div>
         <div class="row">
-            <div class="col">log</div>
+            <div class="col"><button class="btn btn-white" onclick="log()">log</button></div>
             <div class="col"><button class="btn btn-white" onclick="btn(1)">1</button></div>
             <div class="col"><button class="btn btn-white" onclick="btn(2)">2</button></div>
             <div class="col"><button class="btn btn-white" onclick="btn(3)">3</button></div>
-            <div class="col">+</div>
+            <div class="col"><button class="btn btn-white" onclick="btn('+')">+</button></div>
         </div>
         <div class="row">
-            <div class="col">ln</div>
+            <div class="col"><button class="btn btn-white" onclick="ln()">ln</button></div>
             <div class="col">+/-</div>
             <div class="col"><button class="btn btn-white" onclick="btn(0)">0</button></div>
-            <div class="col">&#8729;</div>
-            <div class="col">=</div>
+            <div class="col"><button class="btn btn-white" onclick="btn('.')">&#8729;</button></div>
+            <div class="col"><button class="btn btn-white" onclick="answer()">=</button></div>
         </div>
     </div>
     <script src="script.js"></script>
