@@ -10,91 +10,97 @@
     <link rel="stylesheet" href="style.css">
     <title>Scientific Calculator</title>
 </head>
-<body onkeydown="btn(event.key)">
-    <div id="container">
-        <div class="row">
-            <div class="col-3 ps-3">History:</div>
-            <div class="col" id="history">0</div>
-        </div>
-        <div class="row">
-            <div class="col-3 ps-3">Display:</div>
-            <div class="col" id="display">0</div>
-        </div>
-        <div class="row">
-            <div class="col-3 ps-3">Result:</div>
-            <div class="col" id="result">0</div>
-        </div>
-        <div class="row">
-            <div class="col"><button class="btn btn-white" onclick="toggleDegRad(event)" value="DEG">DEG</button></div>
-            <div class="col">F-E</div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-        </div>
-        <div class="row">
-            <div class="col"><button class="btn btn-white" onclick="memoryclear()">MC</button></div>
-            <div class="col"><button class="btn btn-white" onclick="memoryread()">MR</button></div>
-            <div class="col"><button class="btn btn-white" onclick="memoryplus()">M+</button></div>
-            <div class="col"><button class="btn btn-white" onclick="memoryminus()">M-</button></div>
-            <div class="col"><button class="btn btn-white" onclick="memory()">MS</button></div>
-        </div>
-        <div class="row">
-            <div class="col-5">
-                &#9727; Trigonometry <i class="fa fa-angle-down" aria-hidden="true"></i>
+<body>
+    <div class="row">
+        <div class="col-md-4 col-lg-4 col-sm-0"></div>
+        <div class="col-md-4 col-lg-4 col-sm-12 container">
+            <div id="output">
+                <div class="col" id="display" contenteditable="true">0</div>
+                <div class="col" id="result">0</div>
             </div>
-            <!-- <div class="col"></div> -->
-            <div class="col-5"><i>f</i> function <i class="fa fa-angle-down" aria-hidden="true"></i></div>
-            <div class="col"></div>
+            <div id="keyboard">
+                <div class="row">
+                    <div class="col"><button class="btn btn-white" id="degToRad" onclick="toggleDegRad(event)" value="DEG">DEG</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="toggleFixToExp()" value="Fixed">F-E</button></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col"><button class="btn btn-white" onclick="memoryclear()">MC</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="memoryread()">MR</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="memoryplus()">M+</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="memoryminus()">M-</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="memory()">MS</button></div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <select name="Trigonometry" id="Trigonometry" onchange="btn(event.target.value+'(')">
+                            <option hidden id="trigo">◿ Trigonometry </option>
+                            <option value="sin">sin</option>
+                            <option value="cos">cos</option>
+                            <option value="tan">tan</option>
+                            <option value="cosec">cosec</option>
+                            <option value="sec">sec</option>
+                            <option value="cot">cot</option>
+                        </select>
+                    </div>
+                    <!-- <div class="col"></div> -->
+                    <div class="col-5"><i>f</i> function <i class="fa fa-angle-down" aria-hidden="true"></i></div>
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col"><button class="btn btn-white">2<sup>nd</sup></button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('pi')">𝝅</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('e')">e</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="clearDisplay()">C</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="back()">⌫</button></div>
+                </div>
+                <div class="row">
+                    <div class="col"><button class="btn btn-white" onclick="btn('square(')">x<sup>2</sup></button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('oneBy(')"><sup>1</sup>&#8725;<sub>x</sub></button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('abs(')">|x|</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('exp(')">exp</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('%')">mod</button></div>
+                </div>
+                <div class="row">
+                    <div class="col"><button class="btn btn-white" onclick="btn('sqroot(')"><sup>2</sup>√<sub>x</sub></button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('(')">(</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn(')')">)</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('fact(')">n!</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('/')">&#247;</button></div>
+                </div>
+                <div class="row">
+                    <div class="col"><button class="btn btn-white" onclick="btn('**')">x<sup>y</sup></button></div>
+                    <div class="col"><button class="btn btn-white number" onclick="btn(7)">7</button></div>
+                    <div class="col"><button class="btn btn-white number" onclick="btn(8)">8</button></div>
+                    <div class="col"><button class="btn btn-white number" onclick="btn(9)">9</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('*')">&#215;</button></div>
+                </div>
+                <div class="row">
+                    <div class="col"><button class="btn btn-white" onclick="btn('tenRestTo(')">10<sup>x</sup></button></div>
+                    <div class="col"><button class="btn btn-white number" onclick="btn(4)">4</button></div>
+                    <div class="col"><button class="btn btn-white number" onclick="btn(5)">5</button></div>
+                    <div class="col"><button class="btn btn-white number" onclick="btn(6)">6</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('-')">-</button></div>
+                </div>
+                <div class="row">
+                    <div class="col"><button class="btn btn-white" onclick="btn('log(')">log</button></div>
+                    <div class="col"><button class="btn btn-white number" onclick="btn(1)">1</button></div>
+                    <div class="col"><button class="btn btn-white number" onclick="btn(2)">2</button></div>
+                    <div class="col"><button class="btn btn-white number" onclick="btn(3)">3</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('+')">+</button></div>
+                </div>
+                <div class="row">
+                    <div class="col"><button class="btn btn-white" onclick="btn('ln(')">ln</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="plusMinus()">+/-</button></div>
+                    <div class="col"><button class="btn btn-white number" onclick="btn(0)">0</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="btn('.')">&#8729;</button></div>
+                    <div class="col"><button class="btn btn-white" onclick="answer()">=</button></div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="col">2<sup>nd</sup></div>
-            <div class="col"><button class="btn btn-white" onclick="btn('pi')">𝝅</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn('e')">e</button></div>
-            <div class="col"><button class="btn btn-white" onclick="clearDisplay()">C</button></div>
-            <div class="col"><button class="btn btn-white" onclick="back()">⌫</button></div>
-        </div>
-        <div class="row">
-            <div class="col"><button class="btn btn-white" onclick="square()">x<sup>2</sup></button></div>
-            <div class="col"><button class="btn btn-white" onclick="oneDivBy()"><sup>1</sup>&#8725;<sub>x</sub></button></div>
-            <div class="col"><button class="btn btn-white" onclick="abs()">|x|</button></div>
-            <div class="col">exp</div>
-            <div class="col"><button class="btn btn-white" onclick="btn('%')">mod</button></div>
-        </div>
-        <div class="row">
-            <div class="col"><button class="btn btn-white" onclick="sqroot()"><sup>2</sup>√<sub>x</sub></button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn('(')">(</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn(')')">)</button></div>
-            <div class="col">n!</div>
-            <div class="col"><button class="btn btn-white" onclick="btn('/')">&#247;</button></div>
-        </div>
-        <div class="row">
-            <div class="col"><button class="btn btn-white" onclick="btn('^')">x<sup>y</sup></button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn(7)">7</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn(8)">8</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn(9)">9</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn('*')">&#215;</button></div>
-        </div>
-        <div class="row">
-            <div class="col"><button class="btn btn-white" onclick="tenx()">10<sup>x</sup></button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn(4)">4</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn(5)">5</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn(6)">6</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn('-')">-</button></div>
-        </div>
-        <div class="row">
-            <div class="col"><button class="btn btn-white" onclick="log()">log</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn(1)">1</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn(2)">2</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn(3)">3</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn('+')">+</button></div>
-        </div>
-        <div class="row">
-            <div class="col"><button class="btn btn-white" onclick="ln()">ln</button></div>
-            <div class="col">+/-</div>
-            <div class="col"><button class="btn btn-white" onclick="btn(0)">0</button></div>
-            <div class="col"><button class="btn btn-white" onclick="btn('.')">&#8729;</button></div>
-            <div class="col"><button class="btn btn-white" onclick="answer()">=</button></div>
-        </div>
+        <div class="col-md-4 col-lg-4 col-sm-0"></div>
     </div>
     <script src="script.js"></script>
 </body>
