@@ -150,6 +150,20 @@ function oneBy(num) {
 function square(num) {
     return Math.pow(num,2);
 }
+function fact(num) {
+    let answer = 1;
+    if (num != abs(num)) {
+        return "factorial of - is not possible";
+    }
+    if (num == 0 || num == 1){
+      return answer;
+    }else{
+      for(var i = num; i >= 1; i--){
+        answer = answer * i;
+      }
+      return answer;
+    }
+}
 
 // Trigonometry Functions
 function toggleDegRad(event) {
