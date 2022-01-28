@@ -95,20 +95,27 @@ function plusMinus() {
 }
 function toggleFixToExp() {
     answer();
+    var fixed = 0;
+    if (result.innerText.includes('.')) {
+        fixed = result.innerText.split('.')[1].length;
+      };
     if (display.innerText.includes("e")) {
-        display.innerText = Number(result.innerText).toFixed(15);
+        display.innerText = Number(result.innerText).toFixed(fixed);
     }else{
         display.innerText = Number(result.innerText).toExponential(4);
     }
 }
 function answer() {
     try {
+        result.style.color = "green";
         result.innerText = eval(display.innerText);
     } catch (error) {
-        result.innerText = error;
+        result.style.color = "red";
+        result.innerText = error.message;
     }
 }
 function clearDisplay() {
+    result.style.color = "green";
     display.innerText = 0;
     result.innerText = 0;
 }
