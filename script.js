@@ -1,6 +1,7 @@
 var display = document.getElementById("display");
 var result = document.getElementById("result");
 var degToRadbtn = document.getElementById("degToRad");
+var trigonometry = document.getElementById("Trigonometry");
 const symbols = ["+","-","*","/","%"];
 const functions = [
     "sin(",
@@ -10,6 +11,13 @@ const functions = [
     "sec(",
     "tan(",
     "cot(",
+    "asin(",
+    "acos(",
+    "atan(",
+    "acosec(",
+    "asec(",
+    "atan(",
+    "acot(",
     "log(",
     "ln(",
     "tenRestTo(",
@@ -106,6 +114,22 @@ function toggleFixToExp() {
         display.innerText = Number(result.innerText).toFixed(fixed);
     }else{
         display.innerText = Number(result.innerText).toExponential(4);
+    }
+}
+function secondbtn() {
+    var arr = trigonometry.getElementsByTagName("option");
+    if (arr[1].value == "sin") {
+        for (let i = 1; i < arr.length; i++) {
+            arr[i].value = "a" + arr[i].value;
+            arr[i].innerText = "a" + arr[i].innerText;
+            console.log(arr[i]);
+        }
+    }else{
+        for (let i = 1; i < arr.length; i++) {
+            arr[i].value = arr[i].value.substring(1,arr[i].value.length);
+            arr[i].innerText = arr[i].innerText.substring(1,arr[i].innerText.length);;
+            console.log(arr[i]);
+        }
     }
 }
 function answer() {
@@ -210,6 +234,26 @@ function cot(radNum) {
     return 1 / Math.tan(degToRad(radNum));
 }
 
+// inverse functions
+function asin(radNum) {
+    return Math.asin(degToRad(radNum));
+}
+function acos(radNum) {
+    return Math.acos(degToRad(radNum));
+}
+function atan(radNum) {
+    return Math.atan(degToRad(radNum));
+}
+function asec(radNum) {
+    return Math.acos(1 / degToRad(radNum));
+}
+function acosec(radNum) {
+    return Math.asin(1 / degToRad(radNum));
+}
+function acot(radNum) {
+    return Math.tan(1 / degToRad(radNum));
+}
+
 // Additional Functions
 function round(num) {
     return Math.round(num);
@@ -223,28 +267,19 @@ function floor(num) {
 
 // Memory Functions
 function memory() {
-    if (result.innerText == 0) {
-        store = eval(display.innerText);
-    }else{
-        store = eval(result.innerText);
-    }
+    answer();
+    store = eval(result.innerText);
 }
 function memoryplus() {
-    if (result.innerText == 0) {
-        store += eval(display.innerText);
-    }else{
-        store += eval(result.innerText);
-    }
+    answer();
+    store += eval(result.innerText);
 }
 function memoryminus() {
-    if (result.innerText == 0) {
-        store -= eval(display.innerText);
-    }else{
-        store -= eval(result.innerText);
-    }
+    answer();
+    store -= eval(result.innerText);
 }
 function memoryread() {
-    result.innerText = store;
+    display.innerText = store;
 }
 function memoryclear() {
     store = 0;
