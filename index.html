@@ -46,7 +46,14 @@
                         </select>
                     </div>
                     <!-- <div class="col"></div> -->
-                    <div class="col-5"><i>f</i> function <i class="fa fa-angle-down" aria-hidden="true"></i></div>
+                    <div class="col-5">
+                        <select name="Functions" id="Functions" onclick="btn(event.target.value+'(')">
+                            <option hidden selected id="func"><i>f</i> function</option>
+                            <option value="round">round</option>
+                            <option value="ceil">ceil</option>
+                            <option value="floor">floor</option>
+                        </select>
+                    </div>
                     <div class="col"></div>
                 </div>
                 <div class="row">

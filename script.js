@@ -19,6 +19,9 @@ const functions = [
     "oneBy(",
     "square(",
     "fact(",
+    "round(",
+    "ceil(",
+    "floor(",
     "pi",
     "e"
 ];
@@ -205,6 +208,17 @@ function cosec(radNum) {
 }
 function cot(radNum) {
     return 1 / Math.tan(degToRad(radNum));
+}
+
+// Additional Functions
+function round(num) {
+    return Math.round(num);
+}
+function ceil(num) {
+    return Math.ceil(num);
+}
+function floor(num) {
+    return Math.floor(num);
 }
 
 // Memory Functions
